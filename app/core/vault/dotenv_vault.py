@@ -3,6 +3,8 @@
 import os
 import threading
 
+from dotenv import load_dotenv
+
 from app.core.vault.base import BaseVault
 
 
@@ -11,6 +13,7 @@ class DotEnvVault(BaseVault):
 
     def __init__(self) -> None:
         """Initialize the DotEnv vault."""
+        load_dotenv(override=False)
         self._store: dict[str, str] = {}
         self._lock = threading.RLock()
 
