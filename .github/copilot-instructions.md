@@ -39,7 +39,7 @@ Refer to the following files for domain-specific guidance:
 1. **No comments in code** — Only class docstrings and function docstrings (those are **mandatory**). No inline comments. Code must be self-documenting.
 2. **ALL business logic in services** — API routes are thin wrappers. Zero logic, zero data transformation.
 3. **Factory pattern for infrastructure** — Vault uses factory pattern with ABC in `core/`.
-4. **Type annotations everywhere** — All function parameters, return types. No `Any`.
+4. **Type annotations everywhere** — ALL function signatures must have annotations on every parameter and return type, no exceptions (public, private, nested). No `Any`. No `# type: ignore` without a specific error code (e.g. `# type: ignore[override]`). Run `uv run mypy app/` to verify — **zero errors required**.
 5. **Pydantic for all schemas** — Separate request and response models.
 6. **Dependency injection** — Never instantiate vault/LLM in handlers directly. Use `Depends()` or factory.
 7. **Keep files under 400 lines** — Split large services into helpers.

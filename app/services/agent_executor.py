@@ -126,10 +126,10 @@ class AgentExecutorService:
         """
         tool_configs = self._create_tool_configs(config.tools)
 
-        extra_config = config.config or {}
-        max_iterations = int(extra_config.get("max_iterations", 15))  # type: ignore[arg-type]
-        max_execution_time = int(extra_config.get("max_execution_time_seconds", 120))  # type: ignore[arg-type]
-        temperature = float(extra_config.get("temperature", 0.1))  # type: ignore[arg-type]
+        extra_config: dict[str, object] = config.config or {}
+        max_iterations = int(str(extra_config.get("max_iterations", 15)))
+        max_execution_time = int(str(extra_config.get("max_execution_time_seconds", 120)))
+        temperature = float(str(extra_config.get("temperature", 0.1)))
 
         return ReActAgentConfig(
             system_prompt=config.system_prompt,
