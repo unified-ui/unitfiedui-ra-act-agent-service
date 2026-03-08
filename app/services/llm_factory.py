@@ -88,7 +88,7 @@ def _create_openai(config: AIModelConfig) -> BaseChatModel:
         kwargs["base_url"] = config.base_url
     if config.organization:
         kwargs["organization"] = config.organization
-    return ChatOpenAI(**kwargs)  # type: ignore[arg-type]
+    return ChatOpenAI(**kwargs)
 
 
 def _create_anthropic(config: AIModelConfig) -> BaseChatModel:
@@ -102,7 +102,7 @@ def _create_anthropic(config: AIModelConfig) -> BaseChatModel:
     """
     from langchain_anthropic import ChatAnthropic
 
-    return ChatAnthropic(model=config.model_name, api_key=config.api_key)  # type: ignore[arg-type]
+    return ChatAnthropic(model=config.model_name, api_key=config.api_key)
 
 
 def _create_google_genai(config: AIModelConfig) -> BaseChatModel:
@@ -116,7 +116,7 @@ def _create_google_genai(config: AIModelConfig) -> BaseChatModel:
     """
     from langchain_google_genai import ChatGoogleGenerativeAI
 
-    return ChatGoogleGenerativeAI(model=config.model_name, google_api_key=config.api_key)  # type: ignore[arg-type]
+    return ChatGoogleGenerativeAI(model=config.model_name, google_api_key=config.api_key)
 
 
 def _create_ollama(config: AIModelConfig) -> BaseChatModel:
@@ -133,7 +133,7 @@ def _create_ollama(config: AIModelConfig) -> BaseChatModel:
     kwargs: dict[str, object] = {"model": config.model_name}
     if config.base_url:
         kwargs["base_url"] = config.base_url
-    return ChatOllama(**kwargs)  # type: ignore[arg-type]
+    return ChatOllama(**kwargs)
 
 
 def _create_mistral(config: AIModelConfig) -> BaseChatModel:
@@ -147,7 +147,7 @@ def _create_mistral(config: AIModelConfig) -> BaseChatModel:
     """
     from langchain_mistralai import ChatMistralAI
 
-    return ChatMistralAI(model=config.model_name, api_key=config.api_key)  # type: ignore[arg-type]
+    return ChatMistralAI(model=config.model_name, api_key=config.api_key)
 
 
 def _create_groq(config: AIModelConfig) -> BaseChatModel:
@@ -161,4 +161,4 @@ def _create_groq(config: AIModelConfig) -> BaseChatModel:
     """
     from langchain_groq import ChatGroq
 
-    return ChatGroq(model=config.model_name, api_key=config.api_key)  # type: ignore[arg-type]
+    return ChatGroq(model_name=config.model_name, api_key=config.api_key)

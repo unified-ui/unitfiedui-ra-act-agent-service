@@ -1,6 +1,7 @@
 """Agent invocation endpoint with SSE streaming."""
 
 import logging
+from collections.abc import AsyncGenerator
 
 from fastapi import APIRouter, Depends, Request
 from sse_starlette.sse import EventSourceResponse
@@ -26,7 +27,7 @@ async def invoke_agent(request: Request, body: AgentInvokeRequest) -> EventSourc
     """
     executor = AgentExecutorService()
 
-    async def event_generator():  # type: ignore[no-untyped-def]
+    async def event_generator() -> AsyncGenerator[dict[str, str]]:
         async for event in executor.execute(body, request):
             yield {"event": "message", "data": event}
 
