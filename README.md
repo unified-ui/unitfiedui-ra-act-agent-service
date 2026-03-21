@@ -7,6 +7,40 @@
 
 > **High-performance FastAPI microservice for ReACT agent execution** — powers the unified-ui platform's reasoning and acting capabilities.
 
+## Config
+
+Base URL: http://unifiedui-sample-agent:8087
+
+Conversations (create session):
+POST http://unifiedui-sample-agent:8087/api/v1/anonymous/conversations
+POST http://unifiedui-sample-agent:8087/api/v1/basic-auth/conversations
+POST http://unifiedui-sample-agent:8087/api/v1/api-key/conversations
+POST http://unifiedui-sample-agent:8087/api/v1/entra-id/conversations
+POST http://unifiedui-sample-agent:8087/api/v1/entra-id-appreg/conversations
+
+Agent Invoke (SSE stream) — LangChain:
+POST http://unifiedui-sample-agent:8087/api/v1/anonymous/agent/langchain/invoke
+POST http://unifiedui-sample-agent:8087/api/v1/basic-auth/agent/langchain/invoke
+POST http://unifiedui-sample-agent:8087/api/v1/api-key/agent/langchain/invoke
+POST http://unifiedui-sample-agent:8087/api/v1/entra-id/agent/langchain/invoke
+POST http://unifiedui-sample-agent:8087/api/v1/entra-id-appreg/agent/langchain/invoke
+
+Agent Invoke (SSE stream) — LangGraph:
+POST http://unifiedui-sample-agent:8087/api/v1/anonymous/agent/langgraph/invoke
+POST http://unifiedui-sample-agent:8087/api/v1/basic-auth/agent/langgraph/invoke
+POST http://unifiedui-sample-agent:8087/api/v1/api-key/agent/langgraph/invoke
+POST http://unifiedui-sample-agent:8087/api/v1/entra-id/agent/langgraph/invoke
+POST http://unifiedui-sample-agent:8087/api/v1/entra-id-appreg/agent/langgraph/invoke
+
+Auth:
+- anonymous: no auth
+- basic-auth: Authorization: Basic base64(admin:password)
+- api-key: X-API-Key: test-key-123
+- entra-id: Authorization: Bearer <entra-id-user-token> (UPN must be in ENTRA_ID_AUTHORIZED_UPNS)
+- entra-id-appreg: Authorization: Bearer <client-credentials-token> (App ID must be in ENTRA_ID_AUTHORIZED_APP_IDS)
+
+Swagger UI: http://unifiedui-sample-agent:8087/docs
+
 ## Architecture
 
 ```
