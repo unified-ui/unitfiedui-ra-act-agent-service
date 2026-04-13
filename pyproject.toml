@@ -11,7 +11,7 @@ dependencies = [
     "uvicorn[standard]>=0.34",
     "pydantic>=2.0",
     "pydantic-settings>=2.0",
-    "unifiedui-sdk==0.1.3",
+    "unifiedui-sdk==0.2.3",
     "langchain>=0.3",
     "langchain-core>=0.3",
     "langchain-openai>=0.3",
